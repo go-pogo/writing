@@ -9,7 +9,7 @@ writing
 [latest-release-img]: https://img.shields.io/github/release/go-pogo/writing.svg?label=latest
 [latest-release-url]: https://github.com/go-pogo/writing/releases
 [build-status-img]: https://github.com/go-pogo/writing/workflows/Test/badge.svg
-[build-status-url]: https://github.com/go-pogo/writing/actions?query=workflow%3Test
+[build-status-url]: https://github.com/go-pogo/writing/actions/workflows/test.yml
 [report-img]: https://goreportcard.com/badge/github.com/go-pogo/writing
 [report-url]: https://goreportcard.com/report/github.com/go-pogo/writing
 [doc-img]: https://godoc.org/github.com/go-pogo/writing?status.svg
