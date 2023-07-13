@@ -20,7 +20,9 @@ func NewBytesBufferPool(n int) *BytesBufferPool {
 	return &BytesBufferPool{p: sync.Pool{
 		New: func() interface{} {
 			var buf bytes.Buffer
-			buf.Grow(n)
+			if n != 0 {
+				buf.Grow(n)
+			}
 			return &buf
 		},
 	}}
