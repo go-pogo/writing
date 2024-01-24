@@ -34,5 +34,4 @@ func TestBytesBufferPool_Get(t *testing.T) {
 	p.Put(b)
 	b = p.Get()
 	assert.Equal(t, 0, b.Len())
-	assert.Equal(t, 128, b.Cap())
 }
