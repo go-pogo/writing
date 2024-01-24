@@ -20,3 +20,19 @@ func TestBytesBufferPool(t *testing.T) {
 		assert.True(t, p.Get().Cap() >= n)
 	})
 }
+
+func TestBytesBufferPool_Get(t *testing.T) {
+	var p BytesBufferPool
+
+	b := p.Get()
+	assert.Equal(t, 0, b.Cap())
+
+	const str = "dit is een hele lang test string met heel veel willekeurige woorden die nergens op slaan zolang de buffer maar groeit"
+	b.WriteString(str)
+	assert.Equal(t, str, b.String())
+
+	p.Put(b)
+	b = p.Get()
+	assert.Equal(t, 0, b.Len())
+	assert.Equal(t, 128, b.Cap())
+}

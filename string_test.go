@@ -6,7 +6,6 @@ package writing
 
 import (
 	"github.com/stretchr/testify/assert"
-	"io"
 	"strings"
 	"testing"
 )
@@ -17,11 +16,23 @@ func TestToStringWriter(t *testing.T) {
 		assert.Same(t, &sb, ToStringWriter(&sb))
 	})
 	t.Run("upgraded", func(t *testing.T) {
-		type Writer struct {
-			io.Writer
-		}
-
-		var writer Writer
-		assert.NotSame(t, &writer, ToStringWriter(&writer))
+		var writer writerOnly
+		sw := ToStringWriter(&writer)
+		assert.NotSame(t, &writer, sw)
+		sw.WriteString("test")
+		assert.Equal(t, "test", string(writer.buf))
 	})
+}
+
+type writerOnly struct {
+	buf []byte
+}
+
+func (w *writerOnly) Write(p []byte) (n int, err error) {
+	if w.buf == nil {
+		w.buf = make([]byte, 0, len(p))
+	}
+
+	w.buf = append(w.buf, p...)
+	return len(p), nil
 }
