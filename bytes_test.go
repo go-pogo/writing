@@ -28,7 +28,7 @@ func TestBytesBufferPool_Get(t *testing.T) {
 	assert.Equal(t, 0, b.Cap())
 
 	const str = "dit is een hele lang test string met heel veel willekeurige woorden die nergens op slaan zolang de buffer maar groeit"
-	b.WriteString(str)
+	_, _ = b.WriteString(str)
 	assert.Equal(t, str, b.String())
 
 	p.Put(b)

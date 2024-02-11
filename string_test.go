@@ -19,7 +19,7 @@ func TestToStringWriter(t *testing.T) {
 		var writer writerOnly
 		sw := ToStringWriter(&writer)
 		assert.NotSame(t, &writer, sw)
-		sw.WriteString("test")
+		_, _ = sw.WriteString("test")
 		assert.Equal(t, "test", string(writer.buf))
 	})
 }
