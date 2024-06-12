@@ -5,8 +5,9 @@
 package writing
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestToCountingWriter(t *testing.T) {
