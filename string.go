@@ -26,5 +26,5 @@ func ToStringWriter(w io.Writer) StringWriter {
 type stringWriter struct{ io.Writer }
 
 func (w *stringWriter) WriteString(s string) (int, error) {
-	return w.Writer.Write([]byte(s))
+	return w.Write([]byte(s))
 }
